@@ -1,11 +1,11 @@
 DOCKER=docker
-GROUP=odtn
-PROJECT=odtn-cassini
+GROUP=sdnm
+PROJECT=cassini-odtn
 VERSION=latest
 PORT_NETCONF=830
 PORT_SSH=22
 PORT_RESTCONF=8080
-NAME=odtn-cassini
+NAME=cassini-odtn
 
 # This will output the help for each task
 # thanks to https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html

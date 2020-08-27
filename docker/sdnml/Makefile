@@ -1,11 +1,11 @@
 DOCKER=docker
-GROUP=sdnml
-PROJECT=sdnml-cassini
+GROUP=sdnm
+PROJECT=cassini-sdnm
 VERSION=latest
 PORT_NETCONF="830"
 PORT_SSH=22
 PORT_RESTCONF=8080
-NAME=sdnml-cassini
+NAME=cassini-sdnm
 
 # This will output the help for each task
 # thanks to https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html

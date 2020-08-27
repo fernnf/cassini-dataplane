@@ -20,7 +20,7 @@ RUN cd ~ && git clone http://git.libssh.org/projects/libssh.git \
     && git checkout stable-0.8 \
     && cmake .. && make -j4 && make install
 
-RUN cd ~ && git clone git://git.cryptomilk.org/projects/cmocka.git \
+RUN cd ~ && git clone https://git.cryptomilk.org/projects/cmocka.git \
     && cd cmocka && mkdir build && cd build \
     && git checkout tags/cmocka-1.0.1 \
     && cmake .. && make && make install
