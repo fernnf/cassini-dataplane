@@ -122,11 +122,8 @@ def set_trunk_port(trunk, tags):
 
 
 def update_trunk_port(br):
-
     trunk = get_trunk_ports(br)
-    print(trunk)
     tags = get_tags_br(br)
-    print(tags)
     set_trunk_port(trunk, tags)
 
 
