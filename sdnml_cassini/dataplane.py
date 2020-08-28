@@ -55,18 +55,22 @@ class CassiniDataPlane(object):
 		if (oper == sr.SR_OP_MODIFIED):
 			self.logger.info("New modification on frequency transceiver")
 			i, n, v = self.get_attributes(new.to_string())
-			self.logger.info("{} {} {}".format(i, n, v))
+
 			if n.__eq__("frequency"):
-				self.logger.info("Changing vlan")
-				freq, vlan = self.get_frequency_vlan(i)
-				self.logger.info("{} {} {}".format(i, freq, vlan))
+				old_freq, old_vlan = self.get_frequency_vlan(i)
+				new_vlan = self.convert_freq_vlan(v)
+				self.logger.info("old attributes: {} {} {}".format(i, old_freq, old_vlan))
+				self.logger.info("new attributes: {} {} {}".format(i, v, new_vlan))
+				self.logger.info("changing vlan {} to {}".format(old_vlan, new_vlan))
 				try:
-					ovs.set_freq_port(i, vlan)
+					ovs.set_freq_port(i, new_vlan)
 					trcv = i.split("/")[0]
 					ovs.update_trunk_port(trcv)
+
 					self.logger.info("the frequency was changed")
 				except Exception as ex:
 					self.logger.warning(ex)
+
 
 	def ev_to_str(self, ev):
 		if (ev == sr.SR_OP_CREATED):
@@ -318,7 +322,6 @@ class CassiniDataPlane(object):
 
 	def convert_freq_vlan(self, freq):
 		f = int(freq)
-
 		v = (f * 0.0001 - 19000)
 		return (int(v))
 

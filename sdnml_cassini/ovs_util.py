@@ -84,8 +84,8 @@ def get_ports(br):
 def is_trunk(port):
     cmd = ["get", "port", port, "trunk"]
     ret = _vsctl_cmd(cmd)
-    r = ret.split("\n")
-    if r[0] == "[]":
+    r = ret.replace("\n", "")
+    if r == "[]":
         return False
     return True
 
@@ -97,13 +97,10 @@ def get_tag_port(port):
 
 def get_trunk_ports(br):
     ports = get_ports(br)
-    trunks = []
     for i in ports:
         if is_trunk(i):
-            trunks.append(i)
-    if len(trunks) == 0:
-        raise RuntimeWarning("There are not trunk ports")
-    return trunks
+            return i
+    raise RuntimeWarning("there are not trunk ports")
 
 
 def get_tags_br(br):
@@ -111,20 +108,25 @@ def get_tags_br(br):
     tags = []
     for port in ports:
         if not is_trunk(port):
-            tags.append(get_tag_port(port))
+            tag = get_tag_port(port)
+            tags.append(tag.replace("\n", ""))
+
     if len(tags) == 0:
         raise RuntimeWarning("there are is not tagged ports")
     return tags
 
 
 def set_trunk_port(trunk, tags):
-    cmd = ["set", "port", "".join(trunk), "trunks={}".format(",".join(tags))]
+    cmd = ["set", "port", "{}".format(trunk), "trunks={}".format(",".join(tags))]
     _vsctl_cmd(cmd)
 
 
 def update_trunk_port(br):
+
     trunk = get_trunk_ports(br)
+    print(trunk)
     tags = get_tags_br(br)
+    print(tags)
     set_trunk_port(trunk, tags)
 
 
