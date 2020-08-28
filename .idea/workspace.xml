@@ -153,9 +153,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.sdnml-cassini" />
-      <item itemvalue="Docker.odtn-cassini" />
       <item itemvalue="Python.cassini-dp" />
+      <item itemvalue="Docker.odtn-cassini" />
+      <item itemvalue="Docker.sdnml-cassini" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
