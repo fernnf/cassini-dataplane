@@ -15,7 +15,7 @@
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 import sysrepo as sr
-
+import os
 from sdnml_cassini import init_logger as log
 from sdnml_cassini import ovs_util as ovs
 
@@ -118,6 +118,7 @@ class CassiniDataPlane(object):
 			module = "openconfig-platform"
 			self.subscribe.module_change_subscribe(module, self.module_cb)
 			self.logger.info("Waiting events")
+			os.environ['RUNNING'] = '1'
 			sr.global_loop()
 			self.logger.warning("Application exit requested, exiting.\n")
 		finally:
@@ -324,8 +325,3 @@ class CassiniDataPlane(object):
 		f = int(freq)
 		v = (f * 0.0001 - 19000)
 		return (int(v))
-
-
-if __name__ == '__main__':
-	cassini = CassiniDataPlane()
-	cassini.init()
