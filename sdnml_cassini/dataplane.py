@@ -118,11 +118,20 @@ class CassiniDataPlane(object):
 			module = "openconfig-platform"
 			self.subscribe.module_change_subscribe(module, self.module_cb)
 			self.logger.info("Waiting events")
-			os.environ['RUNNING'] = '1'
+			self.change_status()
 			sr.global_loop()
 			self.logger.warning("Application exit requested, exiting.\n")
 		finally:
 			self.delete_phy_interfaces()
+
+	def change_status(self):
+		fin = open("/root/.cassini", 'rt')
+		data = fin.read()
+		fin.close()
+		data = data.replace("RUNNING=0", "RUNNING=1")
+		fout = open("/root/.cassini", 'wt')
+		fout.write(data)
+		fout.close()
 
 	def print_banner(self):
 		import pyfiglet as fl

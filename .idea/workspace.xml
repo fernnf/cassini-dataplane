@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="832f52fb-ee1a-4f1c-962f-f7efc8fe50b5" name="Default Changelist" comment="New bugs fixes.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker/sdnm/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/sdnm/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/sdnm/init-service.sh" beforeDir="false" afterPath="$PROJECT_DIR$/docker/sdnm/init-service.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdnml_cassini/dataplane.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdnml_cassini/dataplane.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,6 +212,7 @@
       <workItem from="1598884330998" duration="599000" />
       <workItem from="1599057686475" duration="7000" />
       <workItem from="1600840046981" duration="1047000" />
+      <workItem from="1600886779171" duration="1833000" />
     </task>
     <task id="LOCAL-00001" summary="New module and docker images">
       <created>1596433237365</created>
