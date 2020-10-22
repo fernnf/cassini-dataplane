@@ -70,8 +70,8 @@ def set_peer_port(port, peer):
     return _vsctl_cmd(cmd)
 
 
-def set_freq_port(port, freq):
-    cmd = ["set", "port", port, "tag={}".format(freq)]
+def set_vlan_port(port, freq):
+    cmd = ["set", "port", port, "vlan_mode=dot1q-tunnel", "tag={}".format(freq)]
     return _vsctl_cmd(cmd)
 
 

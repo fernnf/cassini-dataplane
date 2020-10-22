@@ -1,4 +1,4 @@
-FROM odtn/odtn-cassini:latest
+FROM sdnm/odtn-cassini:latest
 
 COPY ./ /root/transponder-cassini
 

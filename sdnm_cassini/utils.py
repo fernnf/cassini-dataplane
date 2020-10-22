@@ -14,15 +14,34 @@
 #  limitations under the License.                                              +
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-from sdnml_cassini import init_logger
-from sdnml_cassini.dataplane import CassiniDataPlane
+def make_query(session, xpath, multi=False):
+    def query_item():
+        values = session.get_item(xpath)
+        if values is None:
+            return None
+        ret = []
+        ret.append(values.to_string().rstrip("\n"))
+        return ret.copy()
+
+    def query_items():
+        values = session.get_items(xpath)
+        if values is None:
+            raise RuntimeError("Query Error or None")
+        ret = []
+        for i in range(values.val_cnt()):
+            v = values.val(i)
+            s = v.to_string().rstrip("\n")
+            ret.append(s)
+
+        return ret.copy()
+
+    if multi:
+        return query_items()
+    else:
+        return query_item()
 
 
-def main():
-    logger = init_logger(__name__)
-    dataplane = CassiniDataPlane()
-    dataplane.init()
-
-if __name__ == '__main__':
-    main()
-
+def convert_freq_vlan(freq):
+    f = int(freq)
+    v = (f * 0.0001 - 19000)
+    return (int(v))

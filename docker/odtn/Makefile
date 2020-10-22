@@ -1,7 +1,7 @@
 DOCKER=docker
 GROUP=sdnm
-PROJECT=cassini-odtn
-VERSION=0.1rc1
+PROJECT=odtn-cassini
+VERSION=latest
 PORT_NETCONF=830
 PORT_SSH=22
 PORT_RESTCONF=8080

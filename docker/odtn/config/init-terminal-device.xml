@@ -138,6 +138,17 @@
               <transceiver>xe5</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>10501</index>
+              <config>
+                <index>10501</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>10601</index>
@@ -157,6 +168,17 @@
               <transceiver>xe6</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>10601</index>
+              <config>
+                <index>10601</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>10701</index>
@@ -176,6 +198,17 @@
               <transceiver>xe7</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>10701</index>
+              <config>
+                <index>10701</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>10801</index>
@@ -195,6 +228,17 @@
               <transceiver>xe8</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>10801</index>
+              <config>
+                <index>10801</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>10901</index>
@@ -214,6 +258,17 @@
               <transceiver>xe9</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>10901</index>
+              <config>
+                <index>10901</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>11001</index>
@@ -233,6 +288,17 @@
               <transceiver>xe10</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>11001</index>
+              <config>
+                <index>11001</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>11101</index>
@@ -252,6 +318,17 @@
               <transceiver>xe11</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>11101</index>
+              <config>
+                <index>11101</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>11201</index>
@@ -271,6 +348,17 @@
               <transceiver>xe12</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>11201</index>
+              <config>
+                <index>11201</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>11301</index>
@@ -290,6 +378,17 @@
               <transceiver>xe13</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>11301</index>
+              <config>
+                <index>11301</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>11401</index>
@@ -309,6 +408,17 @@
               <transceiver>xe14</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>11401</index>
+              <config>
+                <index>11401</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>11501</index>
@@ -328,6 +438,17 @@
               <transceiver>xe15</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>11501</index>
+              <config>
+                <index>11501</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>11601</index>
@@ -347,6 +468,17 @@
               <transceiver>xe16</transceiver>
             </config>
           </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>11601</index>
+              <config>
+                <index>11601</index>
+                <assignment-type>LOGICAL_CHANNEL</assignment-type>
+                <logical-channel>0</logical-channel>
+                <allocation>100.0</allocation>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>20101</index>
@@ -360,6 +492,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe1</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20101</index>
@@ -383,6 +520,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe1</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20102</index>
@@ -406,6 +548,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe2</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20201</index>
@@ -429,6 +576,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe2</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20202</index>
@@ -452,6 +604,21 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe3</transceiver>
+            </config>
+          </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>20301</index>
+              <config>
+                <index>20301</index>
+                <assignment-type>OPTICAL_CHANNEL</assignment-type>
+                <optical-channel>oe3/1</optical-channel>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>20302</index>
@@ -465,6 +632,21 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe3</transceiver>
+            </config>
+          </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>20302</index>
+              <config>
+                <index>20302</index>
+                <assignment-type>OPTICAL_CHANNEL</assignment-type>
+                <optical-channel>oe3/2</optical-channel>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>20401</index>
@@ -478,6 +660,21 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe4</transceiver>
+            </config>
+          </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>20401</index>
+              <config>
+                <index>20401</index>
+                <assignment-type>OPTICAL_CHANNEL</assignment-type>
+                <optical-channel>oe4/1</optical-channel>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>20402</index>
@@ -491,6 +688,21 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+          <ingress>
+            <config>
+              <transceiver>oe4</transceiver>
+            </config>
+          </ingress>
+          <logical-channel-assignments>
+            <assignment>
+              <index>20402</index>
+              <config>
+                <index>20402</index>
+                <assignment-type>OPTICAL_CHANNEL</assignment-type>
+                <optical-channel>oe4/2</optical-channel>
+              </config>
+            </assignment>
+          </logical-channel-assignments>
         </channel>
         <channel>
           <index>20501</index>
@@ -504,6 +716,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe5</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20501</index>
@@ -527,6 +744,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe5</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20502</index>
@@ -550,6 +772,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe6</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20601</index>
@@ -573,6 +800,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe6</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20602</index>
@@ -596,6 +828,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe7</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20701</index>
@@ -619,6 +856,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe7</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20702</index>
@@ -642,6 +884,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe8</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20801</index>
@@ -665,6 +912,11 @@
           <state>
             <loopback-mode>NONE</loopback-mode>
           </state>
+           <ingress>
+            <config>
+              <transceiver>oe8</transceiver>
+            </config>
+          </ingress>
           <logical-channel-assignments>
             <assignment>
               <index>20802</index>

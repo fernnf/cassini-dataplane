@@ -20,18 +20,20 @@
         <running/>
     </target>
     <config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
-        <components xmlns='http://openconfig.net/yang/platform'>
-            <component nc:operation='merge'>
-                <name>oe1/1</name>
-                <config>
-                    <name>oe1/1</name>
-                </config>
-                <optical-channel xmlns="http://openconfig.net/yang/terminal-device">
-                    <config>
-                        <frequency>194780000</frequency>
-                    </config>
-                </optical-channel>
-            </component>
-        </components>
+        <terminal-device xmlns="http://openconfig.net/yang/terminal-device">
+            <logical-channels nc:operation='merge'>
+                <channel>
+                    <index>10101</index>
+                    <logical-channel-assignments>
+                        <assignment >
+                            <index>10101</index>
+                            <config>
+                                <logical-channel>20101</logical-channel>
+                            </config>
+                        </assignment>
+                    </logical-channel-assignments>
+                </channel>
+            </logical-channels>
+        </terminal-device>
     </config>
 </edit-config>
