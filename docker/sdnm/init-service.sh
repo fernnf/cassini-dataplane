@@ -56,7 +56,7 @@ function main () {
 
 
   sleep 5
-  python3 /root/transponder-cassini/sdnml_cassini/main.py
+  python3 /root/transponder-cassini/sdnm_cassini/main.py
 
 }
 

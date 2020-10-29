@@ -52,7 +52,7 @@ RUN ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key \
     && cd /root/yang/openconfig-odtn && sh import-yangs.sh \
     && pip3 install netconf-console pyfiglet docker
 
-RUN apt-get install -y openvswitch-switch python3-openvswitch openssh-server
+RUN apt-get update && apt-get install -y openvswitch-switch python3-openvswitch openssh-server nano tcpdump
 
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd \
     && echo "PermitRootLogin yes" >> /etc/ssh/sshd_config \

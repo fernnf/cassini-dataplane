@@ -28,7 +28,7 @@
                 </config>
                 <optical-channel xmlns="http://openconfig.net/yang/terminal-device">
                     <config>
-                        <frequency>194700000</frequency>
+                        <frequency>194780000</frequency>
                     </config>
                 </optical-channel>
             </component>
