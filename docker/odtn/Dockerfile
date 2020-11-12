@@ -1,9 +1,4 @@
 FROM ubuntu:18.04
-COPY yang /root/yang
-COPY config /root/config
-COPY script /root/script
-
-
 
 RUN apt-get update && apt-get upgrade -y \
     && apt-get install -y software-properties-common build-essential openssl libssl-dev libpcre3 libpcre3-dev git make \
@@ -46,6 +41,10 @@ RUN cd ~ && git clone https://github.com/CESNET/Netopeer2.git \
     && cd Netopeer2/ && git checkout v0.7-r1 && cd server \
     && mkdir build && cd build && cmake .. \
     && make -j4 && make install
+
+COPY yang /root/yang
+COPY config /root/config
+COPY script /root/script
 
 RUN ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key \
     && echo "root:root" | chpasswd \

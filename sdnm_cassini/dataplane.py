@@ -241,20 +241,35 @@ class CassiniDataPlane(object):
 			s = m.rsplit("/", 4)[2].split("=")[1].split("]")[0].replace("'", "").strip()
 			self.logger.info("s{} d{}".format(s, d))
 			src = td.get_config_description(self.sess, s)
+			if d.__eq__('0'):
+				dst = d
+			else:
+				dst = td.get_config_description(self.sess, d)
+
 			if src is None:
 				raise ValueError("the source interface index {} not found".format(s))
-			dst = td.get_config_description(self.sess, d)
 			if dst is None:
 				raise ValueError("the destination interface index {} not found".format(d))
 			return src , dst
 
+		def disable_log_ch(v):
+			s, d = get_values(v)
+			ovsctl.set_peer_port(s, "none")
+			ovsctl.set_peer_port(d, "none")
+			self.logger.info("the logical channel assignment was disabled {}<->{}".format(s,d))
+
+		def enable_log_ch(v):
+			s, d = get_values(v)
+			assert not d.__eq__('0') , "It is not able enable logical channel"
+			ovsctl.set_peer_port(s, d)
+			ovsctl.set_peer_port(d, s)
+			self.logger.info("the logical channel assignment was enabled {}<->{}".format(s, d))
+
 		try:
-			osrc, odst = get_values(old)
-			src, dst = get_values(new)
-			ovsctl.set_peer_port(osrc, "none")
-			ovsctl.set_peer_port(odst, "none")
-			ovsctl.set_peer_port(src, dst)
-			ovsctl.set_peer_port(dst, src)
-			self.logger.info("the logical channel assignment was modified {}<->{} to {}<->{}".format(osrc, odst, src, dst))
+			disable_log_ch(old)
+			enable_log_ch(new)
+			self.logger.info("the logical channel assignment was updated")
+		except AssertionError as ae:
+			self.logger.warn(ae)
 		except Exception as ex:
 			self.logger.error(ex)

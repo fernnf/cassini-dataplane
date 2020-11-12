@@ -54,7 +54,7 @@
               <config>
                 <index>10201</index>
                 <assignment-type>LOGICAL_CHANNEL</assignment-type>
-                <logical-channel>20102</logical-channel>
+                <logical-channel>20201</logical-channel>
                 <allocation>100.0</allocation>
               </config>
             </assignment>
@@ -84,7 +84,7 @@
               <config>
                 <index>10301</index>
                 <assignment-type>LOGICAL_CHANNEL</assignment-type>
-                <logical-channel>20202</logical-channel>
+                <logical-channel>0</logical-channel>
                 <allocation>100.0</allocation>
               </config>
             </assignment>
@@ -114,7 +114,7 @@
               <config>
                 <index>10401</index>
                 <assignment-type>LOGICAL_CHANNEL</assignment-type>
-                <logical-channel>20201</logical-channel>
+                <logical-channel>0</logical-channel>
                 <allocation>100.0</allocation>
               </config>
             </assignment>
