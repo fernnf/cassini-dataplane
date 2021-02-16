@@ -24,7 +24,7 @@
               <config>
                 <index>10101</index>
                 <assignment-type>LOGICAL_CHANNEL</assignment-type>
-                <logical-channel>20101</logical-channel>
+                <logical-channel>0</logical-channel>
                 <allocation>100.0</allocation>
               </config>
             </assignment>
@@ -54,7 +54,7 @@
               <config>
                 <index>10201</index>
                 <assignment-type>LOGICAL_CHANNEL</assignment-type>
-                <logical-channel>20201</logical-channel>
+                <logical-channel>0</logical-channel>
                 <allocation>100.0</allocation>
               </config>
             </assignment>
@@ -533,6 +533,7 @@
                 <assignment-type>OPTICAL_CHANNEL</assignment-type>
                 <optical-channel>oe1/2</optical-channel>
               </config>
+
             </assignment>
           </logical-channel-assignments>
         </channel>

@@ -18,7 +18,11 @@ from sdnm_cassini.utils import make_query
 
 MODULE = "openconfig-terminal-device:terminal-device"
 
-
+"""
+change for regex to cut xpath: 
+get modules: re.compile("([^/ ]+)")
+get index: re.compile("([ \d]+)")
+"""
 def get_index_interfaces(session):
     module = MODULE
     submodule = "logical-channels/channel[node()]/index"

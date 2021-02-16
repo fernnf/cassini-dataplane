@@ -13,7 +13,7 @@
                         <assignment >
                             <index>10101</index>
                             <config>
-                                <logical-channel>20103</logical-channel>
+                                <logical-channel>20401</logical-channel>
                             </config>
                         </assignment>
                     </logical-channel-assignments>

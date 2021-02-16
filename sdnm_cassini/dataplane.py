@@ -104,10 +104,11 @@ class CassiniDataPlane(object):
 		s = self.sess.list_schemas()
 		if s is None:
 			self.logger.error("Sysrepo not found")
-			self.logger.info("Existing application")
+			self.logger.info("The dataplane application is existing")
 			exit(2)
 		else:
 			self.logger.info("Sysrepo was found")
+
 		self.logger.info("Retrieving data of repository")
 		self.add_phy_interfaces()
 		self.add_logical_interfaces()
@@ -172,6 +173,7 @@ class CassiniDataPlane(object):
 		interfaces = td.get_index_interfaces(self.sess)
 		for i in interfaces:
 			self.enable_logical_channel(i)
+		self.logger.info("Setting logical assignments client to line side")
 		for i in interfaces:
 			self.enable_assignments_channels(i)
 		self.logger.info("Logical interfaces was created with successful")
@@ -215,8 +217,11 @@ class CassiniDataPlane(object):
 				self.logger.info("It was created new an assignment between {} and {}".format(name, peer))
 			else:
 				self.logger.info("there is no assignment to configure")
+
+		elif type.__eq__("OPTICAL_CHANNEL"):
+			self.logger.info("There is not assignment to optical interface")
 		else:
-			self.logger.info("the port is a OPTICAL_CHANNEL")
+			self.logger.info("the")
 
 	def update_frequency(self, old, new):
 
@@ -239,37 +244,36 @@ class CassiniDataPlane(object):
 		def get_values(m):
 			d = m.rsplit("/", 4)[4].split(" = ")[1].strip()
 			s = m.rsplit("/", 4)[2].split("=")[1].split("]")[0].replace("'", "").strip()
-			self.logger.info("s{} d{}".format(s, d))
-			src = td.get_config_description(self.sess, s)
-			if d.__eq__('0'):
-				dst = d
+			if d.__eq__("0"):
+				dst = None
 			else:
 				dst = td.get_config_description(self.sess, d)
 
-			if src is None:
-				raise ValueError("the source interface index {} not found".format(s))
-			if dst is None:
-				raise ValueError("the destination interface index {} not found".format(d))
-			return src , dst
+			src = td.get_config_description(self.sess, s)
+			return src, dst
 
-		def disable_log_ch(v):
-			s, d = get_values(v)
+		def disable_log_ch(s, d):
 			ovsctl.set_peer_port(s, "none")
 			ovsctl.set_peer_port(d, "none")
-			self.logger.info("the logical channel assignment was disabled {}<->{}".format(s,d))
+			self.logger.info("disabling logical channel: client ({}) to line ({})".format(s,d))
 
-		def enable_log_ch(v):
-			s, d = get_values(v)
-			assert not d.__eq__('0') , "It is not able enable logical channel"
+		def enable_log_ch(s, d):
 			ovsctl.set_peer_port(s, d)
 			ovsctl.set_peer_port(d, s)
-			self.logger.info("the logical channel assignment was enabled {}<->{}".format(s, d))
+			self.logger.info("enabling logical channel: client ({}) to line ({})".format(s,d))
 
 		try:
-			disable_log_ch(old)
-			enable_log_ch(new)
-			self.logger.info("the logical channel assignment was updated")
-		except AssertionError as ae:
-			self.logger.warn(ae)
+			o = get_values(old)
+			n = get_values(new)
+
+			if o[1] is None and n[1] is None:
+				self.logger.info("there is no assignment to configure")
+			elif o[1] is not None and n[1] is None:
+				disable_log_ch(o[0], o[1])
+			elif o[1] is None and n[1] is not None:
+				enable_log_ch(n[0],n[1])
+			else:
+				disable_log_ch(o[0],o[1])
+				enable_log_ch(n[0],n[1])
 		except Exception as ex:
 			self.logger.error(ex)
