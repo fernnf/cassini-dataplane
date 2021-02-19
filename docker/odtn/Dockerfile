@@ -46,6 +46,8 @@ COPY yang /root/yang
 COPY config /root/config
 COPY script /root/script
 
+RUN  python3 -m pip install -U pip
+
 RUN ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key \
     && echo "root:root" | chpasswd \
     && cd /root/yang/openconfig-odtn && sh import-yangs.sh \
