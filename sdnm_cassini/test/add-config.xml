@@ -4,19 +4,22 @@
     <target>
         <running/>
     </target>
-    <config xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+    <config xmlns:xc="urn:ietf:params:xml:ns:netconf:base:1.0">
         <terminal-device xmlns="http://openconfig.net/yang/terminal-device">
-            <logical-channels nc:operation='merge'>
+            <logical-channels>
                 <channel>
                     <index>10101</index>
                     <config>
                         <index>10101</index>
                     </config>
                     <logical-channel-assignments>
-                        <assignment >
+                        <assignment xc:operation="merge">
                             <index>10101</index>
                             <config>
+                                <index>10101</index>
+                                <assignment-type>LOGICAL_CHANNEL</assignment-type>
                                 <logical-channel>20101</logical-channel>
+                                <allocation>100</allocation>
                             </config>
                         </assignment>
                     </logical-channel-assignments>

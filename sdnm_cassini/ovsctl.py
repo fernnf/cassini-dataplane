@@ -75,6 +75,11 @@ def set_vlan_port(port, freq):
     return _vsctl_cmd(cmd)
 
 
+def rem_vlan_port(port, freq):
+    cmd = ["remove", "port", port, "tag", "{}".format(freq)]
+    return _vsctl_cmd(cmd)
+
+
 def get_ports(br):
     cmd = ["list-ports", br]
     p = _vsctl_cmd(cmd)
