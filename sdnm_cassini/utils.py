@@ -42,6 +42,8 @@ def make_query(session, xpath, multi=False):
 
 
 def convert_freq_vlan(freq):
+    if freq is "0":
+        return "0"
     f = int(freq)
     v = (f * 0.0001 - 19000)
     return (int(v))

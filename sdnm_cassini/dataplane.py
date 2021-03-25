@@ -13,7 +13,7 @@
 #  See the License for the specific language governing permissions and         +
 #  limitations under the License.                                              +
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+import traceback
 import sysrepo as sr
 import os
 from sdnm_cassini import init_logger as log
@@ -52,31 +52,34 @@ class CassiniDataPlane(object):
         return i, n, v
 
     def reach_function(self, oper, ch):
-
         def action_platform_frequency(c):
             self.update_frequency(c[0], c[1])
 
         def action_terminal_assignment(c):
             self.update_assignment(c[0], c[1])
 
-        if (ch[0].startswith("/openconfig-platform") or
-                ch[1].startswith("/openconfig-platform")):
-            if (ch[0].find("frequency") or
-                    ch[1].find("frequency")):
-                action_platform_frequency(ch)
+        def is_frequency(c):
+            b = False
+            for f in c:
+                if f is None:
+                    pass
+                else:
+                    b = f.startswith("/openconfig-platform") and f.__contains__("/config/frequency")
+            return b
 
-            else:
-                self.logger.warn("value not found")
+        def is_logical_channel(c):
+            b = False
+            for f in c:
+                if f is None:
+                    pass
+                else:
+                    b = (f.startswith("/openconfig-terminal-device") and f.__contains__("/config/logical-channel"))
+            return b
 
-        elif (ch[0].startswith("/openconfig-terminal-device") or
-              ch[1].startswith("/openconfig-terminal-device")):
-            if (ch[0].find("logical-channel") or
-                    ch[1].find("logical-channel")):
-                action_terminal_assignment(ch)
-
-            else:
-                self.logger.warn("value not found")
-
+        if is_frequency(ch):
+            action_platform_frequency(ch)
+        elif is_logical_channel(ch):
+            action_terminal_assignment(ch)
         else:
             self.logger.warn("module not found")
 
@@ -116,7 +119,6 @@ class CassiniDataPlane(object):
 
                 if event == sr.SR_OP_CREATED:
                     self.logger.info("New event was reached type CREATED")
-                    print("{}\n{}".format(o, n))
                 elif event == sr.SR_OP_MODIFIED:
                     self.logger.info("applying new changes on dataplane")
                     self.reach_function(change.oper(), ch)
@@ -259,25 +261,25 @@ class CassiniDataPlane(object):
             return frq, intf, vlan
 
         try:
-            # create action
-            if old is None and new is not None:
-                n = get_values(new)
-                ovsctl.set_vlan_port(n[1], n[2])
-                self.logger.info("optical frequency was created with vlan {} and frequency {} GHZ".format(n[2], n[0]))
 
-            # delete action
-            elif old is not None and new is None:
-                o = get_values(old)
-                ovsctl.rem_vlan_port(o[1], o[2])
-                self.logger.info("optical frequency {}GHZ was disabled on port {}".format(o[0], o[1]))
+            o = get_values(old)
+            n = get_values(new)
 
-            # update action
-            elif old is not None and new is not None:
-                o = get_values(old)
-                n = get_values(new)
+            # Update
+            if not o[0].__eq__("0") and not n[0].__eq__("0"):
                 ovsctl.set_vlan_port(n[1], n[2])
                 self.logger.info("optical frequency was updated from {} to {} GHZ".format(o[0], n[0]))
                 self.logger.info("vlan dataplane was updated from {} to {}".format(o[2], n[2]))
+
+            # disable
+            elif not o[0].__eq__("0") and n[0].__eq__("0"):
+                ovsctl.rem_vlan_port(o[1], o[2])
+                self.logger.info("optical frequency {}GHZ was disabled on port {}".format(o[0], o[1]))
+
+            # enable
+            elif o[0].__eq__("0") and not n[0].__eq__("0"):
+                ovsctl.set_vlan_port(n[1], n[2])
+                self.logger.info("optical frequency was created with vlan {} and frequency {} GHZ".format(n[2], n[0]))
             else:
                 self.logger.warn("cannot apply configuration")
 
@@ -309,19 +311,19 @@ class CassiniDataPlane(object):
         try:
 
             # create action
-            if old is None and new is not None:
+            if isinstance(old, type(None)) and not isinstance(new, type(None)):
                 n = get_values(new)
                 enable_log_ch(n[0], n[1])
                 self.logger.info("it was created a assignment from {} to {}".format(n[0], n[1]))
 
             # delete action
-            elif old is not None and new is None:
+            elif not isinstance(old, type(None)) and isinstance(new, type(None)):
                 o = get_values(old)
-                disable_log_ch(o[0],o[1])
+                disable_log_ch(o[0], o[1])
                 self.logger.info("it was disabled a logical-channel from {} to {} ".format(o[0], o[1]))
 
-            # update
-            elif old is not None and new is not None:
+            # update action
+            elif not isinstance(old, type(None)) and not isinstance(new, type(None)):
                 o = get_values(old)
                 n = get_values(new)
 
@@ -335,7 +337,10 @@ class CassiniDataPlane(object):
                     disable_log_ch(o[0], o[1])
                     enable_log_ch(n[0], n[1])
 
-                self.logger.info("it was updated a logical-channel from {}<>{} to {}<>{} ".format(o[0], o[1], n[0], n[1]))
+                self.logger.info(
+                    "it was updated a logical-channel from {}<>{} to {}<>{} ".format(o[0], o[1], n[0], n[1]))
 
         except Exception as ex:
-            self.logger.error(ex)
+            traceback.print_exc()
+
+
